@@ -28,4 +28,601 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Collection reference
-const absensiCollection = collection(db, " aplikasi_absensi_siswa");
+const absensiCollection = collection(db, " aplikasi_<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Absensi Siswa Otomatis</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #ff4b8b, #ff8c00, #ffcc00);
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 75, 139, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .info-item {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #ff4b8b;
+            color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .hadir {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .izin {
+            background-color: #2196F3;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .sakit {
+            background-color: #FFC107;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .alpa {
+            background-color: #F44336;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .action-cell {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-edit {
+            background-color: #2196F3;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .btn-delete {
+            background-color: #F44336;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .close {
+            font-size: 24px;
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 5px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-preview {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-left: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .action-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            .header-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KEHADIRAN KELAS</h1>
+            <div class="header-info">
+                <div class="info-item">KELAS: <span id="kelas-display">XII RPL</span></div>
+                <div class="info-item">PEKAN KE: <span id="pekan-display">1</span></div>
+            </div>
+        </header>
+
+        <div class="action-buttons">
+            <button id="tambah-siswa" class="btn-primary">Tambah Siswa</button>
+            <button id="share-whatsapp" class="btn-whatsapp">Bagikan ke WhatsApp</button>
+        </div>
+
+        <table id="tabel-absensi">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nama Siswa</th>
+                    <th>Senin</th>
+                    <th>Selasa</th>
+                    <th>Rabu</th>
+                    <th>Kamis</th>
+                    <th>Jumat</th>
+                    <th>Sabtu</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Modal Form Tambah -->
+        <div id="modal-tambah" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Tambah Siswa Baru</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="form-tambah">
+                    <div class="form-group">
+                        <label for="nama">Nama Siswa</label>
+                        <input type="text" id="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status Kehadiran</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="hadir" name="status" value="hadir" checked>
+                                <label for="hadir" class="hadir">H</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="izin" name="status" value="izin">
+                                <label for="izin" class="izin">I</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="sakit" name="status" value="sakit">
+                                <label for="sakit" class="sakit">S</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="alpa" name="status" value="alpa">
+                                <label for="alpa" class="alpa">A</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="hari">Hari</label>
+                        <select id="hari" required>
+                            <option value="senin">Senin</option>
+                            <option value="selasa">Selasa</option>
+                            <option value="rabu">Rabu</option>
+                            <option value="kamis">Kamis</option>
+                            <option value="jumat">Jumat</option>
+                            <option value="sabtu">Sabtu</option>
+                      </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Modal Form Ubah -->
+        <div id="modal-ubah" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Ubah Data Siswa</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <form id="form-ubah">
+                    <input type="hidden" id="edit-id">
+                    <div class="form-group">
+                        <label for="edit-nama">Nama Siswa</label>
+                        <input type="text" id="edit-nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Status Kehadiran</label>
+                        <div class="radio-group">
+                            <div class="radio-option">
+                                <input type="radio" id="edit-hadir" name="edit-status" value="hadir">
+                                <label for="edit-hadir" class="hadir">H</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="edit-izin" name="edit-status" value="izin">
+                                <label for="edit-izin" class="izin">I</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="edit-sakit" name="edit-status" value="sakit">
+                                <label for="edit-sakit" class="sakit">S</label>
+                            </div>
+                            <div class="radio-option">
+                                <input type="radio" id="edit-alpa" name="edit-status" value="alpa">
+                                <label for="edit-alpa" class="alpa">A</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-hari">Hari</label>
+                        <select id="edit-hari" required>
+                            <option value="senin">Senin</option>
+                            <option value="selasa">Selasa</option>
+                            <option value="rabu">Rabu</option>
+                            <option value="kamis">Kamis</option>
+                            <option value="jumat">Jumat</option>
+                            <option value="sabtu">Sabtu</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Simpan Perubahan</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Database menggunakan localStorage
+        const dbName = 'absensiSiswaDB';
+        
+        // Inisialisasi database
+        function initDB() {
+            if (!localStorage.getItem(dbName)) {
+                const initialData = {
+                    kelas: "XII RPL",
+                    pekan: 1,
+                    siswa: []
+                };
+                localStorage.setItem(dbName, JSON.stringify(initialData));
+            }
+            return JSON.parse(localStorage.getItem(dbName));
+        }
+        
+        // Simpan data ke database
+        function saveDB(data) {
+            localStorage.setItem(dbName, JSON.stringify(data));
+        }
+        
+        // Render data ke tabel
+        function renderTable() {
+            const db = initDB();
+            const tableBody = document.querySelector('#tabel-absensi tbody');
+            tableBody.innerHTML = '';
+            
+            db.siswa.forEach((siswa, index) => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${siswa.nama}</td>
+                    <td class="${siswa.absensi.senin || ''}">${siswa.absensi.senin ? getStatusLabel(siswa.absensi.senin) : ''}</td>
+                    <td class="${siswa.absensi.selasa || ''}">${siswa.absensi.selasa ? getStatusLabel(siswa.absensi.selasa) : ''}</td>
+                    <td class="${siswa.absensi.rabu || ''}">${siswa.absensi.rabu ? getStatusLabel(siswa.absensi.rabu) : ''}</td>
+                    <td class="${siswa.absensi.kamis || ''}">${siswa.absensi.kamis ? getStatusLabel(siswa.absensi.kamis) : ''}</td>
+                    <td class="${siswa.absensi.jumat || ''}">${siswa.absensi.jumat ? getStatusLabel(siswa.absensi.jumat) : ''}</td>
+                    <td class="${siswa.absensi.sabtu || ''}">${siswa.absensi.sabtu ? getStatusLabel(siswa.absensi.sabtu) : ''}</td>
+                    <td class="action-cell">
+                        <button class="btn-edit" data-id="${siswa.id}">Ubah</button>
+                        <button class="btn-delete" data-id="${siswa.id}">Hapus</button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Tambahkan event listener untuk tombol edit dan hapus
+            document.querySelectorAll('.btn-edit').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    openEditModal(id);
+                });
+            });
+            
+            document.querySelectorAll('.btn-delete').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = e.target.getAttribute('data-id');
+                    deleteSiswa(id);
+                });
+            });
+        }
+        
+        // Mendapatkan label untuk status
+        function getStatusLabel(status) {
+            switch(status) {
+                case 'hadir': return 'H';
+                case 'izin': return 'I';
+                case 'sakit': return 'S';
+                case 'alpa': return 'A';
+                default: return '';
+            }
+        }
+        
+        // Tambah siswa baru
+        function addSiswa(nama, status, hari) {
+            const db = initDB();
+            const existingSiswa = db.siswa.find(s => s.nama.toLowerCase() === nama.toLowerCase());
+            
+            if (existingSiswa) {
+                // Jika siswa sudah ada, update absensinya
+                existingSiswa.absensi[hari] = status;
+            } else {
+                // Jika siswa belum ada, tambahkan baru
+                const newSiswa = {
+                    id: Date.now().toString(),
+                    nama: nama,
+                    absensi: {
+                        senin: '',
+                        selasa: '',
+                        rabu: '',
+                        kamis: '',
+                        jumat: '',
+                        sabtu: ''
+                    }
+                };
+                newSiswa.absensi[hari] = status;
+                db.siswa.push(newSiswa);
+            }
+            
+            saveDB(db);
+            renderTable();
+        }
+        
+        // Buka modal edit
+        function openEditModal(id) {
+            const db = initDB();
+            const siswa = db.siswa.find(s => s.id === id);
+            
+            if (siswa) {
+                document.getElementById('edit-id').value = siswa.id;
+                document.getElementById('edit-nama').value = siswa.nama;
+                
+                // Cari hari yang sudah ada absensinya
+                const hariWithAbsensi = Object.entries(siswa.absensi).find(([hari, status]) => status !== '');
+                if (hariWithAbsensi) {
+                    document.getElementById('edit-hari').value = hariWithAbsensi[0];
+                    document.querySelector(`#edit-${hariWithAbsensi[1]}`).checked = true;
+                }
+                
+                openModal('modal-ubah');
+            }
+        }
+        
+        // Update data siswa
+        function updateSiswa(id, nama, status, hari) {
+            const db = initDB();
+            const siswaIndex = db.siswa.findIndex(s => s.id === id);
+            
+            if (siswaIndex !== -1) {
+                // Reset semua absensi
+                db.siswa[siswaIndex].absensi = {
+                    senin: '',
+                    selasa: '',
+                    rabu: '',
+                    kamis: '',
+                    jumat: '',
+                    sabtu: ''
+                };
+                
+                // Set absensi untuk hari yang dipilih
+                db.siswa[siswaIndex].absensi[hari] = status;
+                db.siswa[siswaIndex].nama = nama;
+                
+                saveDB(db);
+                renderTable();
+            }
+        }
+        
+        // Hapus siswa
+        function deleteSiswa(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus siswa ini?')) {
+                const db = initDB();
+                db.siswa = db.siswa.filter(s => s.id !== id);
+                saveDB(db);
+                renderTable();
+            }
+        }
+        
+        // Buka modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+        
+        // Tutup modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+        
+        // Bagikan ke WhatsApp
+        function shareToWhatsApp() {
+            const db = initDB();
+            let message = `*LAPORAN ABSENSI KELAS*%0a`;
+            message += `Kelas: ${db.kelas}%0a`;
+            message += `Pekan ke: ${db.pekan}%0a%0a`;
+            
+            message += `*Daftar Absensi:*%0a`;
+            
+            db.siswa.forEach((siswa, index) => {
+                const totalHadir = Object.values(siswa.absensi).filter(status => status === 'hadir').length;
+                message += `${index + 1}. ${siswa.nama}: ${totalHadir}/6 hari hadir%0a`;
+            });
+            
+            const whatsappURL = `https://wa.me/?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        }
+        
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render tabel saat halaman dimuat
+            renderTable();
+   absensi_siswa");

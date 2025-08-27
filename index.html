@@ -439,19 +439,19 @@
         const row = document.createElement('tr');
         
         row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${siswa.nama}</td>
-                    <td class="${siswa.absensi.senin || ''}">${siswa.absensi.senin ? getStatusLabel(siswa.absensi.senin) : ''}</td>
-                    <td class="${siswa.absensi.selasa || ''}">${siswa.absensi.selasa ? getStatusLabel(siswa.absensi.selasa) : ''}</td>
-                    <td class="${siswa.absensi.rabu || ''}">${siswa.absensi.rabu ? getStatusLabel(siswa.absensi.rabu) : ''}</td>
-                    <td class="${siswa.absensi.kamis || ''}">${siswa.absensi.kamis ? getStatusLabel(siswa.absensi.kamis) : ''}</td>
-                    <td class="${siswa.absensi.jumat || ''}">${siswa.absensi.jumat ? getStatusLabel(siswa.absensi.jumat) : ''}</td>
-                    <td class="${siswa.absensi.sabtu || ''}">${siswa.absensi.sabtu ? getStatusLabel(siswa.absensi.sabtu) : ''}</td>
-                    <td class="action-cell">
-                        <button class="btn-edit" data-id="${siswa.id}">Ubah</button>
-                        <button class="btn-delete" data-id="${siswa.id}">Hapus</button>
-                    </td>
-                `;
+          <td>${index + 1}</td>
+          <td>${siswa.nama}</td>
+          <td class="${siswa.absensi.senin || ''}">${siswa.absensi.senin ? getStatusLabel(siswa.absensi.senin) : ''}</td>
+          <td class="${siswa.absensi.selasa || ''}">${siswa.absensi.selasa ? getStatusLabel(siswa.absensi.selasa) : ''}</td>
+          <td class="${siswa.absensi.rabu || ''}">${siswa.absensi.rabu ? getStatusLabel(siswa.absensi.rabu) : ''}</td>
+          <td class="${siswa.absensi.kamis || ''}">${siswa.absensi.kamis ? getStatusLabel(siswa.absensi.kamis) : ''}</td>
+          <td class="${siswa.absensi.jumat || ''}">${siswa.absensi.jumat ? getStatusLabel(siswa.absensi.jumat) : ''}</td>
+          <td class="${siswa.absensi.sabtu || ''}">${siswa.absensi.sabtu ? getStatusLabel(siswa.absensi.sabtu) : ''}</td>
+          <td class="action-cell">
+            <button class="btn-edit" data-id="${siswa.id}">Ubah</button>
+            <button class="btn-delete" data-id="${siswa.id}">Hapus</button>
+          </td>
+        `;
         
         tableBody.appendChild(row);
       });
@@ -593,8 +593,7 @@
       message += `*Daftar Absensi:*%0a`;
       
       db.siswa.forEach((siswa, index) => {
-        const totalHadir = Object.values(siswa.absensi).filter(status => status === 'hadir').length;
-        message += `${index + 1}. ${siswa.nama}: ${totalHadir}/6 hari hadir%0a`;
+        message += `${index + 1}. ${siswa.nama}%0a`;
       });
       
       const whatsappURL = `https://wa.me/?text=${message}`;
@@ -654,5 +653,4 @@
     });
   </script>
 </body>
-
 </html>
