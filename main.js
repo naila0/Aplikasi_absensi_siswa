@@ -28,4 +28,4 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 // Collection reference
-const absensiCollection = Collection (db, "aplikasi_absensi_siswa")
+const absensiCollection = Collection (db, "aplikasi_absensi")
